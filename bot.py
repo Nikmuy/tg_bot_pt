@@ -493,6 +493,14 @@ def main():
         },
          fallbacks=[CommandHandler('cancel', cancel)],
     )
+    conv_handler_apt_list = ConversationHandler(
+        entry_points=[CommandHandler('get_apt_list', get_apt_listCommand)
+        ],
+        states={
+            'get_apt_list': [MessageHandler(Filters.text & ~Filters.command,get_apt_list)],
+        },
+         fallbacks=[CommandHandler('cancel', cancel)],
+    )
 
     conv_handler_email = ConversationHandler(
         entry_points=[CommandHandler('find_email', findEmailCommand)
