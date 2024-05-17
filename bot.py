@@ -463,7 +463,7 @@ def find_phone_number (update: Update, context):
 
 def verify_password (update: Update, context):
     user_input = update.message.text # Получаем текст для проверки пароля
-    passwordRegex = re.compile(r'^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()]{8,}$')
+    passwordRegex = re.compile(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()])(.{8,})$')
     passwordCheck = passwordRegex.match(user_input) # проверка пароля
 
     if  passwordCheck: # Обрабатываем случай, когда пароль прошёл проверку
