@@ -433,7 +433,7 @@ def find_email (update: Update, context):
     emailList = emailRegex.findall(user_input) # Ищем почты
     if not emailList: # Обрабатываем случай, когда почт нет
         update.message.reply_text('Почты не найдены')
-        return # Завершаем выполнение функции
+        return ConversationHandler.END
     
     emails = '' # Создаем строку, в которую будем записывать номера телефонов
     for i in range(len(emailList)):
@@ -450,7 +450,7 @@ def find_phone_number (update: Update, context):
     phoneNumberList = phoneNumRegex.findall(user_input) # Ищем номера телефонов
     if not phoneNumberList: # Обрабатываем случай, когда номеров телефонов нет
         update.message.reply_text('Телефонные номера не найдены')
-        return # Завершаем выполнение функции
+        return ConversationHandler.END
     
     phoneNumbers = '' # Создаем строку, в которую будем записывать номера телефонов
     for i in range(len(phoneNumberList)):
@@ -468,7 +468,6 @@ def verify_password (update: Update, context):
 
     if  passwordCheck: # Обрабатываем случай, когда пароль прошёл проверку
         update.message.reply_text(f"Поздравляю, твой пароль '{user_input}' прошёл проверку и является сложным")
-        return # Завершаем выполнение функции
     else:
         update.message.reply_text('Простой пароль') # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
