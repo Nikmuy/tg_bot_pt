@@ -511,21 +511,21 @@ def main():
          fallbacks=[CommandHandler('cancel', cancel)],
     )
 
-    conv_handler_password = ConversationHandler(
-        entry_points=[CommandHandler('verify_password', verifypasswordCommand)
-        ],
-        states={
-            'verify_password': [MessageHandler(Filters.text & ~Filters.command,verify_password)],
-        },
-         fallbacks=[CommandHandler('cancel', cancel)],
-    )
+    # conv_handler_password = ConversationHandler(
+    #     entry_points=[CommandHandler('verify_password', verifypasswordCommand)
+    #     ],
+    #     states={
+    #         'verify_password': [MessageHandler(Filters.text & ~Filters.command,verify_password)],
+    #     },
+    #      fallbacks=[CommandHandler('cancel', cancel)],
+    # )
 		
 	# Регистрируем обработчики команд
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", helpCommand))
     dp.add_handler(conv_handler_phone)
     dp.add_handler(conv_handler_email)
-    dp.add_handler(conv_handler_password)
+    #dp.add_handler(conv_handler_password)
     dp.add_handler(CommandHandler("get_release", get_release))
     dp.add_handler(CommandHandler("get_uname", get_uname))
     dp.add_handler(CommandHandler("get_uptime", get_uptime))
