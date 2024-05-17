@@ -521,7 +521,7 @@ def find_email (update: Update, context):
 
 def find_phone_number (update: Update, context):
     user_input = update.message.text # Получаем текст, содержащий(или нет) номера телефонов
-    phoneNumRegex = re.compile(r'^((8|\+7) \(\d{3}\) \d{3}-\d{2}-\d{2}|(8|\+7)\d{10}|(8|\+7)\(\d{3}\)\d{7}|(8|\+7) \d{3} \d{3} \d{2} \d{2}|(8|\+7) \(\d{3}\) \d{3} \d{2} \d{2}|(8|\+7)-\d{3}-\d{3}-\d{2}-\d{2})$')
+    phoneNumRegex = re.compile(r'((8|\+7) \(\d{3}\) \d{3}-\d{2}-\d{2}|(8|\+7)\d{10}|(8|\+7)\(\d{3}\)\d{7}|(8|\+7) \d{3} \d{3} \d{2} \d{2}|(8|\+7) \(\d{3}\) \d{3} \d{2} \d{2}|(8|\+7)-\d{3}-\d{3}-\d{2}-\d{2})')
     phoneNumberList = phoneNumRegex.findall(user_input) # Ищем номера телефонов
     if not phoneNumberList: # Обрабатываем случай, когда номеров телефонов нет
         update.message.reply_text('Телефонные номера не найдены')
