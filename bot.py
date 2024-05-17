@@ -88,7 +88,12 @@ def get_repl_logs (update: Update, context):
         data = stdout.read() + stderr.read()
         client.close()
         data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-        update.message.reply_text(data) # Отправляем сообщение пользователю
+        if len(data)>=4096:
+            mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+            for i in mass:
+                update.message.reply_text(i)
+        else:
+            update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     except (Exception, Error) as error:
         update.message.reply_text(str(error))
     return ConversationHandler.END # Завершаем работу обработчика диалога
@@ -112,7 +117,12 @@ def get_phone_numbers(update: Update, context):
         data= ''
         for row in info:
             data+=f"{row[0]}. {row[1]} \n"
-        update.message.reply_text(data)
+        if len(data)>=4096:
+            mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+            for i in mass:
+                update.message.reply_text(i)
+        else:
+            update.message.reply_text(data) # Отправляем сообщение пользователю
     except (Exception, Error) as error:
         update.message.reply_text(str(error))
         logging.debug(error)
@@ -209,7 +219,12 @@ def get_emails(update: Update, context):
         data= ''
         for row in info:
             data+=f"{row[0]}. {row[1]} \n"
-        update.message.reply_text(data)
+            if len(data)>=4096:
+                mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+        else:
+            update.message.reply_text(data) # Отправляем сообщение пользователю
     except (Exception, Error) as error:
         update.message.reply_text(str(error))
         logging.debug(error)
@@ -233,7 +248,12 @@ def get_release (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_uname (update: Update, context):
@@ -248,7 +268,12 @@ def get_uname (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_uptime (update: Update, context):
@@ -263,7 +288,12 @@ def get_uptime (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_df (update: Update, context):
@@ -278,7 +308,12 @@ def get_df (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_free (update: Update, context):
@@ -293,7 +328,12 @@ def get_free (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_w (update: Update, context):
@@ -308,7 +348,12 @@ def get_w (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_mpstat (update: Update, context):
@@ -323,7 +368,12 @@ def get_mpstat (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_auth (update: Update, context):
@@ -338,7 +388,12 @@ def get_auth (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_critical (update: Update, context):
@@ -353,7 +408,12 @@ def get_critical (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_ps (update: Update, context):
@@ -368,7 +428,12 @@ def get_ps (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_ss (update: Update, context):
@@ -383,7 +448,12 @@ def get_ss (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_services (update: Update, context):
@@ -398,7 +468,12 @@ def get_services (update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) # Отправляем сообщение пользователю
+    if len(data)>=4096:
+        mass=[data[i:i+4096] for i in range(0, len(data), 4096)]
+        for i in mass:
+            update.message.reply_text(i)
+    else:
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def get_apt_list (update: Update, context):
@@ -422,7 +497,7 @@ def get_apt_list (update: Update, context):
         for i in mass:
             update.message.reply_text(i)
     else:
-        update.message.reply_text(data) # Отправляем сообщение пользователю
+        update.message.reply_text(data) # Отправляем сообщение пользователю # Отправляем сообщение пользователю
     return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def find_email (update: Update, context):
