@@ -461,16 +461,16 @@ def find_phone_number (update: Update, context):
     update.message.reply_text("Напиши 'отмена', если не хочешь, чтоб твои номера были внесены в таблицу")
     return 'num_to_db'
 
-# def verify_password (update: Update, context):
-#     user_input = update.message.text # Получаем текст для проверки пароля
-#     passwordRegex = re.compile(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()])(.{8,})$')
-#     passwordCheck = passwordRegex.match(user_input) # проверка пароля
+def verify_password (update: Update, context):
+    user_input = update.message.text # Получаем текст для проверки пароля
+    passwordRegex = re.compile(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()])(.{8,})$')
+    passwordCheck = passwordRegex.match(user_input) # проверка пароля
 
-#     if  passwordCheck: # Обрабатываем случай, когда пароль прошёл проверку
-#         update.message.reply_text(f"Поздравляю, твой пароль '{user_input}' прошёл проверку и является сложным")
-#     else:
-#         update.message.reply_text('Простой пароль') # Отправляем сообщение пользователю
-#     return ConversationHandler.END # Завершаем работу обработчика диалога
+    if  passwordCheck: # Обрабатываем случай, когда пароль прошёл проверку
+        update.message.reply_text(f"Поздравляю, твой пароль '{user_input}' прошёл проверку и является сложным")
+    else:
+        update.message.reply_text('Простой пароль') # Отправляем сообщение пользователю
+    return ConversationHandler.END # Завершаем работу обработчика диалога
 
 def echo(update: Update, context):
     update.message.reply_text(update.message.text)
@@ -511,21 +511,21 @@ def main():
          fallbacks=[CommandHandler('cancel', cancel)],
     )
 
-    # conv_handler_password = ConversationHandler(
-    #     entry_points=[CommandHandler('verify_password', verifypasswordCommand)
-    #     ],
-    #     states={
-    #         'verify_password': [MessageHandler(Filters.text & ~Filters.command,verify_password)],
-    #     },
-    #      fallbacks=[CommandHandler('cancel', cancel)],
-    # )
+    conv_handler_password = ConversationHandler(
+        entry_points=[CommandHandler('verify_password', verifypasswordCommand)
+        ],
+        states={
+            'verify_password': [MessageHandler(Filters.text & ~Filters.command,verify_password)],
+        },
+         fallbacks=[CommandHandler('cancel', cancel)],
+    )
 		
 	# Регистрируем обработчики команд
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", helpCommand))
     dp.add_handler(conv_handler_phone)
     dp.add_handler(conv_handler_email)
-    #dp.add_handler(conv_handler_password)
+    dp.add_handler(conv_handler_password)
     dp.add_handler(CommandHandler("get_release", get_release))
     dp.add_handler(CommandHandler("get_uname", get_uname))
     dp.add_handler(CommandHandler("get_uptime", get_uptime))
@@ -542,7 +542,7 @@ def main():
     dp.add_handler(CommandHandler("get_emails", get_emails))
     dp.add_handler(CommandHandler("get_phone_numbers", get_phone_numbers))
     dp.add_handler(conv_handler_apt_list)
-    
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
 		
 	# Запускаем бота
     updater.start_polling()
