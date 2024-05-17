@@ -542,7 +542,6 @@ def main():
     dp.add_handler(CommandHandler("get_repl_logs", get_repl_logs))
     dp.add_handler(CommandHandler("get_emails", get_emails))
     dp.add_handler(CommandHandler("get_phone_numbers", get_phone_numbers))
-    dp.add_handler(CommandHandler("get_apt_list", get_phone_numbers))
     dp.add_handler(conv_handler_apt_list)
     
 		
